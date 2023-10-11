@@ -1,7 +1,6 @@
-.warpper {
-  background-color: aquamarine;
+.wrapper {
   width: 340px;
-  height: 1000px;
+  height: 200px;
 }
 
 .container-card-form {
@@ -10,16 +9,323 @@
 }
 
 .background-small {
+  position: relative;
   background-image: url(../images/bg-main-mobile.png);
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: brown;
   width: 100%;
   height: 250px;
 }
 
 .background-big {
-  background-color: green;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 80px;
+}
+
+.container-imges {
+  position: relative;
+  display: flex;
   width: 100%;
   height: 250px;
+}
+
+.img-back {
+  position: absolute;
+  height: 160px;
+  right: 5%;
+  top: 10%;
+}
+
+.img-back-cvc {
+  position: absolute;
+  color: white;
+  font-size: 1.2rem;
+  top: 33.5%;
+  right: 15%;
+  z-index: 800;
+}
+
+.img-front {
+  position: absolute;
+  height: 160px;
+  left: 5%;
+  bottom: -10%;
+  /* z-index: 100; */
+}
+
+.img-front-circle-big {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  top: 54%;
+  left: 10%;
+  z-index: 800;
+}
+
+.img-front-circle-small {
+  position: absolute;
+  /* background-color: white; */
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  top: 56.5%;
+  left: 20%;
+  z-index: 800;
+}
+
+.card-number-display {
+  position: absolute;
+  color: white;
+  top: 74%;
+  left: 10%;
+  font-size: 2rem;
+  letter-spacing: 1.5px;
+  z-index: 800;
+}
+
+.card-name-display {
+  position: absolute;
+  color: white;
+  top: 94%;
+  left: 10%;
+  font-size: 1rem;
+  z-index: 800;
+}
+
+.card-exipre-month-display {
+  position: absolute;
+  color: white;
+  top: 94%;
+  right: 30%;
+  font-size: 1rem;
+  z-index: 800;
+}
+
+.card-exipre-year-display {
+  position: absolute;
+  color: white;
+  top: 94%;
+  right: 26%;
+  font-size: 1rem;
+  z-index: 800;
+}
+
+/* INPUT FIELDS */
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--veryDarkVio);
+  margin-bottom: 8px;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+input {
+  height: 40px;
+  border-radius: 10px;
+  /* outline: none; */
+  border: 1px solid var(--lightGrayVio);
+}
+
+input::placeholder {
+  padding-left: 20px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: "Space Grotesk", sans-serif;
+  color: hsla(279, 6%, 55%, 0.5);
+}
+
+.error-msg {
+  font-size: 1rem;
+  font-weight: 700;
+  color: red;
+}
+
+.container-ex-date-and-cvc {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input-ex-date-month,
+.input-ex-date-year {
+  width: 70px;
+}
+
+.input-ex-date-year {
+  margin-left: 6px;
+}
+
+.input-cvc {
+  /* align-self: flex-end; */
+  width: 162px;
+  margin-left: 14px;
+}
+
+.error-msg-cvc {
+  margin-left: 102px;
+}
+
+.btn-confirm {
+  height: 46px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--veryDarkVio);
+  color: white;
+  font-family: "Space Grotesk", sans-serif;
+  margin-top: 30px;
+}
+
+.container-thankyou {
+  /* background-color: aquamarine; */
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-thankyou {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: rgb(123, 30, 177);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-checkmark {
+  color: white;
+  font-size: 2.6rem;
+}
+
+.container-thankyou h3 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+}
+
+.container-thankyou p {
+  font-size: 1.8rem;
+  color: var(--darkGray);
+}
+
+.hidden {
+  display: none;
+}
+
+/*------------------------------------------------------------------------------------- */
+
+/* DESKTOP */
+
+@media screen and (min-width: 1440px) {
+  /* .wrapper {
+    width: 340px;
+    height: 200px;
+  } */
+
+  /* LEFT SIDE */
+  .container-card-form {
+    display: flex;
+    flex-direction: row;
+  }
+
+  /* */
+  .background-small {
+    position: relative;
+    background-image: url(../images/bg-main-desktop.png);
+    width: 40%;
+    height: 100%;
+  }
+
+  /* CHANGE HERE !? */
+  .background-big {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* width: 100%; */
+    /* height: 100%; */
+    margin-top: 0px;
+  }
+
+  /**/
+  .container-imges {
+    height: 100%;
+  }
+  .img-back {
+    height: 200px;
+    left: 60%;
+    top: 50%;
+  }
+
+  .img-back-cvc {
+    top: 58.5%;
+    right: -24%;
+  }
+
+  .img-front {
+    height: 200px;
+    left: 45%;
+    top: 25%;
+  }
+
+  .img-front-circle-big {
+    top: 28%;
+    left: 50%;
+  }
+
+  .img-front-circle-small {
+    top: 28.8%;
+    left: 58%;
+  }
+
+  /* FIX NUMBER HAS TO BE MIDDLE*/
+  .card-number-display {
+    top: 34%;
+    left: 48%;
+  }
+
+  .card-name-display {
+    top: 42%;
+    left: 50%;
+  }
+
+  .card-exipre-month-display {
+    top: 42%;
+    right: -10%;
+  }
+
+  .card-exipre-year-display {
+    top: 42%;
+    right: -14%;
+  }
+
+  /* RIGHT SIDE */
+
+  .wrapper {
+    width: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* INPUT FIELDS */
+
+  .input-cvc {
+    width: 222px;
+  }
 }
