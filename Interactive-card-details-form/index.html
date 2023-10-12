@@ -22,14 +22,14 @@
     <section class="container-card-form">
       <div class="background-small">
         <div class="container-imges">
-          <p class="img-back-cvc">000</p>
+          <p class="img-back-cvc card-cvc-display">000</p>
           <img class="img-back" src="images/bg-card-back.png" alt="" />
           <div class="img-front-circle-big"></div>
           <div class="img-front-circle-small"></div>
           <p class="card-number-display">0000 0000 0000 0000</p>
           <p class="card-name-display">JANE APPLESEED</p>
-          <p class="card-exipre-month-display">00</p>
-          <p class="card-exipre-year-display">00</p>
+          <p class="card-exipre-month-display card-month-display">00</p>
+          <p class="card-exipre-year-display card-year-display">00</p>
           <img class="img-front" src="images/bg-card-front.png" alt="" />
         </div>
       </div>
@@ -47,9 +47,8 @@
             <input
               class="input-name"
               type="text"
-              name="cardName"
+              name="name"
               id="name"
-              min="1"
               maxlength="30"
               placeholder="e.g. Jane Appleseed"
               required
@@ -59,14 +58,13 @@
             <input
               class="input-number"
               type="tel"
-              name="cardNumber"
+              name="number"
               id="number"
-              min="1"
               maxlength="16"
               placeholder="e.g. 1234 5678 9123 0000"
               required
             />
-            <p class="error-msg error-msg-number hidden">Wrong format, numbers only</p>
+            <p class="error-msg error-msg-number hidden">Can't be blank</p>
             <div class="container-label-MonthCvc">
               <label for="ex-date-month/year">EXP. DATE (MM/YY)</label>
               <label for="cvc" class="label-cvc">CVC</label>
@@ -75,9 +73,8 @@
               <input
                 class="input-ex-date-month"
                 type="tel"
-                name="cardDateMonth"
+                name="month"
                 id="date"
-                min="1"
                 maxlength="2"
                 placeholder="MM"
                 required
@@ -85,21 +82,13 @@
               <input
                 class="input-ex-date-year"
                 type="tel"
-                name="cardDateMonth"
+                name="year"
                 id="date"
                 maxlength="2"
                 placeholder="YY"
                 required
               />
-              <input
-                class="input-cvc"
-                type="tel"
-                name="cardCvc"
-                id="cvc"
-                maxlength="3"
-                placeholder="e.g 123"
-                required
-              />
+              <input class="input-cvc" type="tel" name="cvc" id="cvc" maxlength="3" placeholder="e.g 123" required />
               <p class="error-msg error-msg-date hidden">Can't be blank</p>
               <p class="error-msg error-msg-cvc hidden">Can't be blank</p>
             </div>

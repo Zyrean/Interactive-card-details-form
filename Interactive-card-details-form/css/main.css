@@ -251,6 +251,10 @@ input:focus::placeholder {
   display: none;
 }
 
+.hiddenOpacity {
+  opacity: 0;
+}
+
 /*------------------------------------------------------------------------------------- */
 
 /* DESKTOP */
@@ -271,6 +275,7 @@ input:focus::placeholder {
 
   .background-big {
     margin-top: 0px;
+    /* position: fixed; */
   }
 
   .container-imges {

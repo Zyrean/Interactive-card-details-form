@@ -15,8 +15,13 @@
 "use strict";
 
 const inputFields = document.querySelectorAll("input");
+const labelErrNums = document.querySelector(".error-msg-number");
 const btnConfirm = document.querySelector(".btn-confirm");
-const paraError = document.querySelectorAll(".error-msg");
+
+const labelCardNumber = document.querySelector(".card-number-display");
+const labelCardName = document.querySelector(".card-name-display");
+
+const labelCardAll = document;
 
 const formatName = function (str) {
   return str
@@ -27,27 +32,153 @@ const formatName = function (str) {
     .join(" ");
 };
 
-const checkNumber = function () {};
-// const show
+const hideErrors = function (field) {
+  document.querySelector(`.error-msg-${field}`).classList.add("hidden");
+};
+
+const showErrors = function (field, msg = "Can't be blank") {
+  document.querySelector(`.error-msg-${field}`).classList.remove("hidden");
+  document.querySelector(`.error-msg-${field}`).textContent = msg;
+};
+
+const displayCardInputs = function (field) {
+  document.querySelector(`.card-${field.name}-display`).textContent = field.value;
+};
+
+// const showFormaErorr = function (field, msg) {
+//   document.querySelector(`.error-msg-${field}`).textContent = msg;
+// };
 
 btnConfirm.addEventListener("click", function () {
   inputFields.forEach((inp) => {
+    hideErrors(inp.id);
+    // When input is empty
     if (!inp.value) {
-      document.querySelector(`.error-msg-${inp.id}`).classList.remove("hidden");
-    } else if (inp.type === "text") {
+      showErrors(inp.id);
+    }
+    // When input is text type
+    else if (inp.type === "text") {
       const input = formatName(inp.value);
       inp.value = input;
-    } else if ((inp.type = "tel")) {
-      if (isNaN(inp.value)) {
-        document.querySelector(`.error-msg-${inp.id}`).classList.remove("hidden");
-
-        console.log(inp.value);
-        // console.log("has numbers");
-      } else {
-        // console.log("no numbers");
-      }
-      //   isNaN(inp.value) ? "has numbers" : "no numbers";
+      displayCardInputs(inp);
     }
-    console.log(inp);
+    // When input is text number (tel) type
+    else if (inp.id === "number") {
+      // Cheks if its actually a number
+      if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
+      else if (inp.value.length < 16) showErrors(inp.id, "Please enter all numbers");
+      // If its a number display in card
+      else {
+        displayCardInputs(inp);
+      }
+    } else if (inp.id === "date") {
+      if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
+      else if (inp.value.length < 2) showErrors(inp.id, "Please enter all numbers");
+      else displayCardInputs(inp);
+    } else if (inp.id === "cvc") {
+      if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
+      else if (inp.value.length < 3) showErrors(inp.id, "Please enter all numbers");
+      else displayCardInputs(inp);
+    }
   });
 });
+
+// BACKUP1
+
+// btnConfirm.addEventListener("click", function () {
+//   inputFields.forEach((inp) => {
+//     hideErrors(inp.id);
+//     // When input is empty
+//     if (!inp.value) {
+//       showErrors(inp.id);
+//     }
+//     // When input is text type
+//     else if (inp.type === "text") {
+//       const input = formatName(inp.value);
+//       inp.value = input;
+//       displayCardInputs(inp);
+//     }
+//     // When input is text number (tel) type
+//     else if ((inp.type = "tel")) {
+//       // Cheks if its actually a number
+//       if (isNaN(inp.value)) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id);
+//       }
+//       // If its a number display in card
+//       else {
+//         console.log(inp);
+//         displayCardInputs(inp);
+//       }
+//     }
+//   });
+// });
+
+// BACKUP 2
+
+// const hideErrors = function (field) {
+//   document.querySelector(`.error-msg-${field}`).classList.add("hidden");
+// };
+
+// const showErrors = function (field) {
+//   document.querySelector(`.error-msg-${field}`).classList.remove("hidden");
+// };
+
+// const showFormaErorr = function (field, msg) {
+//   document.querySelector(`.error-msg-${field}`).textContent = msg;
+// };
+
+// const displayCardInputs = function (field) {
+//   document.querySelector(`.card-${field.name}-display`).textContent = field.value;
+// };
+
+// btnConfirm.addEventListener("click", function () {
+//   inputFields.forEach((inp) => {
+//     hideErrors(inp.id);
+//     // When input is empty
+//     if (!inp.value) {
+//       showErrors(inp.id);
+//     }
+//     // When input is text type
+//     else if (inp.type === "text") {
+//       const input = formatName(inp.value);
+//       inp.value = input;
+//       displayCardInputs(inp);
+//     }
+//     // When input is text number (tel) type
+//     else if (inp.id === "number") {
+//       // Cheks if its actually a number
+//       if (isNaN(inp.value)) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id, "Wrong format, numbers only");
+//       } else if (inp.value.length < 16) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id, "Please enter all numbers");
+//       }
+//       // If its a number display in card
+//       else {
+//         displayCardInputs(inp);
+//       }
+//     } else if (inp.id === "date") {
+//       if (isNaN(inp.value)) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id, "Wrong format, numbers only");
+//       } else if (inp.value.length < 2) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id, "Please enter all numbers");
+//       } else {
+//         displayCardInputs(inp);
+//       }
+//     } else if (inp.id === "cvc") {
+//       if (isNaN(inp.value)) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id, "Wrong format, numbers only");
+//       } else if (inp.value.length < 3) {
+//         showErrors(inp.id);
+//         showFormaErorr(inp.id, "Please enter all numbers");
+//       } else {
+//         displayCardInputs(inp);
+//       }
+//     }
+//   });
+// });
