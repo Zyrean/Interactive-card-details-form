@@ -12,6 +12,7 @@
 
 "use strict";
 
+// Elements
 const inputFields = document.querySelectorAll("input");
 const btnConfirm = document.querySelector(".btn-confirm");
 const form = document.querySelector(".form-card");
@@ -26,8 +27,9 @@ const labelCardAll = document;
 
 let num;
 
-const formatName = function (str) {
-  return str
+// FUNCTIONS
+const formatName = (str) => {
+  str
     .toLowerCase()
     .trim()
     .split(" ")
@@ -35,18 +37,14 @@ const formatName = function (str) {
     .join(" ");
 };
 
-const hideErrors = function (field) {
-  document.querySelector(`.error-msg-${field}`).classList.add("hidden");
-};
+const hideErrors = (field) => document.querySelector(`.error-msg-${field}`).classList.add("hidden");
 
 const showErrors = function (field, msg = "Can't be blank") {
   document.querySelector(`.error-msg-${field}`).classList.remove("hidden");
   document.querySelector(`.error-msg-${field}`).textContent = msg;
 };
 
-const displayCardInputs = function (field) {
-  document.querySelector(`.card-${field.name}-display`).textContent = field.value;
-};
+const displayCardInputs = (field) => (document.querySelector(`.card-${field.name}-display`).textContent = field.value);
 
 const checkInput = function (inp, inpMax) {
   if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
@@ -94,6 +92,7 @@ const checkValidation = function () {
   });
 };
 
+// EVENTS
 btnConfirm.addEventListener("click", function (e) {
   e.preventDefault();
   checkValidation();
