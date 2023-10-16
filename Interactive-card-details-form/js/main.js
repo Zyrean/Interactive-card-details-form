@@ -10,18 +10,21 @@
 // - If there are no errors, display the completed state
 // - Reset the form when the user clicks "Continue" on the completed state
 
-// number format function wegen leerspace
-
 "use strict";
 
 const inputFields = document.querySelectorAll("input");
-const labelErrNums = document.querySelector(".error-msg-number");
 const btnConfirm = document.querySelector(".btn-confirm");
+const form = document.querySelector(".form-card");
+
+const thankYou = document.querySelector(".container-thankyou");
+const btnContinue = document.querySelector(".btn-continue");
 
 const labelCardNumber = document.querySelector(".card-number-display");
 const labelCardName = document.querySelector(".card-name-display");
 
 const labelCardAll = document;
+
+let num;
 
 const formatName = function (str) {
   return str
@@ -45,11 +48,30 @@ const displayCardInputs = function (field) {
   document.querySelector(`.card-${field.name}-display`).textContent = field.value;
 };
 
-// const showFormaErorr = function (field, msg) {
-//   document.querySelector(`.error-msg-${field}`).textContent = msg;
-// };
+const checkInput = function (inp, inpMax) {
+  if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
+  else if (inp.value.length < inpMax) showErrors(inp.id, "Please enter all numbers");
+  else {
+    num++;
+    displayCardInputs(inp);
+  }
+};
 
-btnConfirm.addEventListener("click", function () {
+const displayThankyou = function () {
+  form.classList.add("hidden");
+  thankYou.classList.remove("hidden");
+};
+
+const resetForm = function () {
+  form.classList.remove("hidden");
+  thankYou.classList.add("hidden");
+
+  inputFields.forEach((inp) => (inp.value = ""));
+};
+
+const checkValidation = function () {
+  num = 0;
+
   inputFields.forEach((inp) => {
     hideErrors(inp.id);
     // When input is empty
@@ -61,124 +83,22 @@ btnConfirm.addEventListener("click", function () {
       const input = formatName(inp.value);
       inp.value = input;
       displayCardInputs(inp);
-    }
-    // When input is text number (tel) type
-    else if (inp.id === "number") {
-      // Cheks if its actually a number
-      if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
-      else if (inp.value.length < 16) showErrors(inp.id, "Please enter all numbers");
-      // If its a number display in card
-      else {
-        displayCardInputs(inp);
-      }
+      num++;
+    } else if (inp.id === "number") {
+      checkInput(inp, 16);
     } else if (inp.id === "date") {
-      if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
-      else if (inp.value.length < 2) showErrors(inp.id, "Please enter all numbers");
-      else displayCardInputs(inp);
+      checkInput(inp, 2);
     } else if (inp.id === "cvc") {
-      if (isNaN(inp.value)) showErrors(inp.id, "Wrong format, numbers only");
-      else if (inp.value.length < 3) showErrors(inp.id, "Please enter all numbers");
-      else displayCardInputs(inp);
+      checkInput(inp, 3);
     }
   });
+};
+
+btnConfirm.addEventListener("click", function (e) {
+  e.preventDefault();
+  checkValidation();
+
+  num === 5 ? displayThankyou() : "";
 });
 
-// BACKUP1
-
-// btnConfirm.addEventListener("click", function () {
-//   inputFields.forEach((inp) => {
-//     hideErrors(inp.id);
-//     // When input is empty
-//     if (!inp.value) {
-//       showErrors(inp.id);
-//     }
-//     // When input is text type
-//     else if (inp.type === "text") {
-//       const input = formatName(inp.value);
-//       inp.value = input;
-//       displayCardInputs(inp);
-//     }
-//     // When input is text number (tel) type
-//     else if ((inp.type = "tel")) {
-//       // Cheks if its actually a number
-//       if (isNaN(inp.value)) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id);
-//       }
-//       // If its a number display in card
-//       else {
-//         console.log(inp);
-//         displayCardInputs(inp);
-//       }
-//     }
-//   });
-// });
-
-// BACKUP 2
-
-// const hideErrors = function (field) {
-//   document.querySelector(`.error-msg-${field}`).classList.add("hidden");
-// };
-
-// const showErrors = function (field) {
-//   document.querySelector(`.error-msg-${field}`).classList.remove("hidden");
-// };
-
-// const showFormaErorr = function (field, msg) {
-//   document.querySelector(`.error-msg-${field}`).textContent = msg;
-// };
-
-// const displayCardInputs = function (field) {
-//   document.querySelector(`.card-${field.name}-display`).textContent = field.value;
-// };
-
-// btnConfirm.addEventListener("click", function () {
-//   inputFields.forEach((inp) => {
-//     hideErrors(inp.id);
-//     // When input is empty
-//     if (!inp.value) {
-//       showErrors(inp.id);
-//     }
-//     // When input is text type
-//     else if (inp.type === "text") {
-//       const input = formatName(inp.value);
-//       inp.value = input;
-//       displayCardInputs(inp);
-//     }
-//     // When input is text number (tel) type
-//     else if (inp.id === "number") {
-//       // Cheks if its actually a number
-//       if (isNaN(inp.value)) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id, "Wrong format, numbers only");
-//       } else if (inp.value.length < 16) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id, "Please enter all numbers");
-//       }
-//       // If its a number display in card
-//       else {
-//         displayCardInputs(inp);
-//       }
-//     } else if (inp.id === "date") {
-//       if (isNaN(inp.value)) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id, "Wrong format, numbers only");
-//       } else if (inp.value.length < 2) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id, "Please enter all numbers");
-//       } else {
-//         displayCardInputs(inp);
-//       }
-//     } else if (inp.id === "cvc") {
-//       if (isNaN(inp.value)) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id, "Wrong format, numbers only");
-//       } else if (inp.value.length < 3) {
-//         showErrors(inp.id);
-//         showFormaErorr(inp.id, "Please enter all numbers");
-//       } else {
-//         displayCardInputs(inp);
-//       }
-//     }
-//   });
-// });
+btnContinue.addEventListener("click", resetForm);

@@ -1,6 +1,6 @@
 .wrapper {
   width: 340px;
-  height: 200px;
+  height: fit-content;
 }
 
 .container-card-form {
@@ -53,7 +53,6 @@
   height: 160px;
   left: 5%;
   bottom: -10%;
-  /* z-index: 100; */
 }
 
 .img-front-circle-big {
@@ -69,7 +68,6 @@
 
 .img-front-circle-small {
   position: absolute;
-  /* background-color: white; */
   border: 1px solid white;
   border-radius: 50%;
   width: 15px;
@@ -149,8 +147,6 @@ input {
   padding: 0px;
   font-family: "Space Grotesk", sans-serif;
   font-size: 1.6rem;
-  /* box-sizing: border-box; */
-  /* padding-left: 10px; */
 }
 
 input::placeholder {
@@ -193,14 +189,14 @@ input:focus::placeholder {
 .input-cvc {
   width: 162px;
   margin-left: 14px;
-  /* align-self: flex-end; */
 }
 
 .error-msg-cvc {
   margin-left: 102px;
 }
 
-.btn-confirm {
+.btn-confirm,
+.btn-continue {
   height: 46px;
   width: 100%;
   border-radius: 10px;
@@ -213,7 +209,6 @@ input:focus::placeholder {
 }
 
 .container-thankyou {
-  /* background-color: aquamarine; */
   width: 100%;
   height: fit-content;
   display: flex;
@@ -261,6 +256,12 @@ input:focus::placeholder {
 
 @media screen and (min-width: 1440px) {
   /* LEFT SIDE */
+
+  .wrapper {
+    width: 1140px;
+    height: 200px;
+  }
+
   .container-card-form {
     display: flex;
     flex-direction: row;
@@ -275,7 +276,6 @@ input:focus::placeholder {
 
   .background-big {
     margin-top: 0px;
-    /* position: fixed; */
   }
 
   .container-imges {

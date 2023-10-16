@@ -28,7 +28,7 @@
           <div class="img-front-circle-small"></div>
           <p class="card-number-display">0000 0000 0000 0000</p>
           <p class="card-name-display">JANE APPLESEED</p>
-          <p class="card-exipre-month-display card-month-display">00</p>
+          <p class="card-exipre-month-display card-month-display">00<span>/</span></p>
           <p class="card-exipre-year-display card-year-display">00</p>
           <img class="img-front" src="images/bg-card-front.png" alt="" />
         </div>
@@ -41,8 +41,9 @@
             </div>
             <h3 class="">THANK YOU!</h3>
             <p>We've added your card details</p>
+            <button class="btn-continue">Continue</button>
           </div>
-          <form class="form-card" action="get">
+          <form class="form-card">
             <label for="cardName">CARDHOLDER NAME</label>
             <input
               class="input-name"
@@ -92,8 +93,8 @@
               <p class="error-msg error-msg-date hidden">Can't be blank</p>
               <p class="error-msg error-msg-cvc hidden">Can't be blank</p>
             </div>
+            <button class="btn-confirm">Confirm</button>
           </form>
-          <button class="btn-confirm">Confirm</button>
         </div>
       </div>
     </section>
